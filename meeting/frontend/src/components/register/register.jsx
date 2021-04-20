@@ -1,10 +1,12 @@
 import React from 'react';
-import RegisterformContainer from './registerFormcontainer';
 
-export default function logIn() {
+function Register() {
   return (
-    <div className="d-flex justify-content-around bg-secondary vw-100 h-100">
-      <RegisterformContainer />
+    <div className="container">
+      <h1>Testing</h1>
     </div>
+
   );
 }
+
+export default Register;
