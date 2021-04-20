@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-from backend.credentials import DATABASE_URL
+from credentials import DATABASE_URL, SECRET_KEY_CREDENTIAL, IS_DEBUGGING
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5xy8#w!r8s30*q48gjd)=47hs!1xsovdbc@$ng_=vcv5$y$n(-'
+SECRET_KEY = SECRET_KEY_CREDENTIAL
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = IS_DEBUGGING
 
 ALLOWED_HOSTS = []
 
