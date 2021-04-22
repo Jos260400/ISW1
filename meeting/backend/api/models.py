@@ -7,3 +7,4 @@ from django_neomodel import DjangoNode
 class SocialMediaPlatform(StructuredNode):
     name = StringProperty()
     url = StringProperty()
+

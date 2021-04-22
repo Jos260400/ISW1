@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Pages from './components/register/register';
+import './style/index.scss';
+import App from './components/register/registerForm';
 
 const container = document.getElementById('root');
-ReactDOM.render(<Pages />, container);
+ReactDOM.render(<App />, container);
