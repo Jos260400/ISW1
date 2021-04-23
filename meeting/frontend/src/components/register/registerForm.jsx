@@ -5,8 +5,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 
 const schema = z.object({
+  email: z.string().nonempty({ message: 'Ingresa un usuario' }).email({message: 'Ingresa un correo válido'}),
   username: z.string().nonempty({ message: 'Ingresa un usuario' }),
-  age: z.number().min(10),
+  password: z.string().nonempty({message: 'Ingresa una contraseña'}).min(8,{message: 'Mínimo 8 caracteres'}),
 });
 
 function RegisterForm() {
@@ -17,16 +18,12 @@ function RegisterForm() {
     email: '',
     username: '',
     password: '',
-    user_name: '',
-    lastname: '',
   });
 
   const [registerFilled, setRegisterfilled] = useState({
     email: false,
     username: false,
     password: false,
-    user_name: false,
-    lastname: false,
   });
 
   const handleInputChange = (e) => {
@@ -55,6 +52,21 @@ function RegisterForm() {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
+        {/* Email */}
+        <div className="position-relative mt-2">
+          <input
+            className={`input ${registerFilled.username ? 'is-filled' : ' '}`}
+            type="text"
+            name="email"
+            onInput={handleInputChange}
+            {...register('email')}
+          />
+          <label className="label">Correo electrónico</label>
+          <small className="text-danger text-small d-block mb-2">
+            {/* <Exclamation_icon/> */}
+            {errors.email?.message}
+          </small>
+        </div>
         {/* Username */}
         <div className="position-relative mt-2">
           <input
@@ -70,6 +82,23 @@ function RegisterForm() {
             {errors.username?.message}
           </small>
         </div>
+        {/* Password */}
+        <div className="position-relative mt-2">
+          <input
+            className={`input ${registerFilled.username ? 'is-filled' : ' '}`}
+            type="text"
+            name="password"
+            onInput={handleInputChange}
+            {...register('password')}
+          />
+          <label className="label">Contraseña</label>
+          <small className="text-danger text-small d-block mb-2">
+            {/* <Exclamation_icon/> */}
+            {errors.password?.message}
+          </small>
+        </div>
+        {/*REGISTER BUTTON*/}
+        <button onSubmit={onSubmit} className={`btn btn-meeting btn-fill my-3 w-100`}>REGISTRARTE</button>
       </form>
     </>
   );
