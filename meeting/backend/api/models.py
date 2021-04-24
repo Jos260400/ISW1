@@ -8,3 +8,6 @@ class SocialMediaPlatform(StructuredNode):
     name = StringProperty()
     url = StringProperty()
 
+class userPerson(models.Model):
+    name = models.CharField(max_length=50)
+    uvg_id = models.CharField(max_length=6)
