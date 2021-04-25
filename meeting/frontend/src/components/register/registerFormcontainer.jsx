@@ -1,9 +1,11 @@
 import React from 'react';
 import RegisterForm from './registerForm';
+import history from '../history';
 
 function RegisterFormContainer() {
   const handleClick = () =>{
-    console.log('Testing')
+    history.push('/');
+    history.go();
   };
 
   return(
