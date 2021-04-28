@@ -17,4 +17,15 @@ module.exports = [
       },
     ],
   },
+  {
+    test: /\.(svg|png|jpg|gif)$/i,
+    use: {
+      loader: 'file-loader',
+      options: {
+        esModule: false,
+        name: '[name].[ext]',
+        outputPath: 'imgs',
+      },
+    },
+  },
 ];
