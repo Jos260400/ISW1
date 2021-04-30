@@ -2,7 +2,7 @@ from rest_framework import serializers, status
 from rest_framework.response import Response
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
-from api.models import SocialMediaPlatform
+from .models import SocialMediaPlatform
 
 
 @api_view(['GET'])

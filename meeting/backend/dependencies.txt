@@ -2,3 +2,4 @@ django
 djangorestframework
 django-cors-headers
 django_neomodel
+dj_database_url

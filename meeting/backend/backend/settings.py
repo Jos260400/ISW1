@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
+import dj_database_url
 from pathlib import Path
 from credentials import DATABASE_URL, SECRET_KEY_CREDENTIAL, IS_DEBUGGING
 
@@ -26,7 +27,7 @@ SECRET_KEY = SECRET_KEY_CREDENTIAL
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = IS_DEBUGGING
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,11 +77,30 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny'],
+    'UNAUTHENTICATED_USER': None,
+}
+
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 NEOMODEL_NEO4J_BOLT_URL = DATABASE_URL
+
+if os.environ.get('DATABASE_URL'):
+    DATABASES = {
+        'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+
 
 
 # Password validation
