@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'django_neomodel',
-    'api'
+    'api',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -76,13 +77,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'backend.wsgi.application'
-
-REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
-    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny'],
-    'UNAUTHENTICATED_USER': None,
-}
-
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

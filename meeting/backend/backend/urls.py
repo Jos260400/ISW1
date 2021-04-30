@@ -20,5 +20,5 @@ from api.views import get_all_social_platforms
 urlpatterns = [
     path('', get_all_social_platforms),
     path('admin/', admin.site.urls),
-    path('', include('api.urls')),
+    path('', include('users.urls')),
 ]
