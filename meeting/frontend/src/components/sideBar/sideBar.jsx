@@ -4,6 +4,7 @@ import {
 } from 'react-pro-sidebar';
 import { Link, useRouteMatch } from 'react-router-dom';
 import { AiTwotoneHome, AiOutlineSearch } from 'react-icons/ai';
+import { BsHouseDoorFill, BsSerach } from 'react-icons/bs';
 import { FaUserAlt } from 'react-icons/fa';
 import 'react-pro-sidebar/dist/css/styles.css';
 
@@ -12,21 +13,16 @@ export default function Home() {
   return (
     <div className="home">
       <ProSidebar>
-        <SidebarHeader>
-          <MenuItem icon={<FaUserAlt />}>
-            <Link to={`${url}`} />
-            Home
+        <Menu iconShape="circle">
+          <MenuItem>
+            <Link to={`${url}`}>
+              <p className="sidebar-menuItem d-flex justify-content-around">
+                <span className="mr-3 mb-0 pb-0"><BsHouseDoorFill /></span>
+                Home
+              </p>
+            </Link>
           </MenuItem>
-        </SidebarHeader>
-        <Menu iconShape="square">
-          <MenuItem icon={<AiTwotoneHome />}>
-            <Link to={`${url}`} />
-            Home
-          </MenuItem>
-          <MenuItem icon={<AiOutlineSearch />}>
-            <Link to={`${url}/search`} />
-            Buscar amigos
-          </MenuItem>
+          {/* SEARCH */}
         </Menu>
       </ProSidebar>
     </div>

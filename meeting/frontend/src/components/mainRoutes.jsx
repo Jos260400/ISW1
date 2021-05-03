@@ -12,7 +12,7 @@ export default function MainRoutes() {
         <Route exact path="/" component={LogIn} />
         <Route path="/signUp" component={SignUp} />
         <Route path="/404" component={Custom404} />
-        <Route path="/sideBar" component={sideBar} />
+        <Route path="/home" component={sideBar} />
       </Switch>
     </Router>
   );
