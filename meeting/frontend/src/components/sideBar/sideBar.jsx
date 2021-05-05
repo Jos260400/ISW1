@@ -16,8 +16,9 @@ export default function Home() {
         <Menu iconShape="circle">
           <MenuItem>
             <Link to={`${url}`}>
+              <span className="mr-3 mb-0 pb-0"><BsHouseDoorFill /></span>
               <p className="sidebar-menuItem d-flex justify-content-around">
-                <span className="mr-3 mb-0 pb-0"><BsHouseDoorFill /></span>
+
                 Home
               </p>
             </Link>
