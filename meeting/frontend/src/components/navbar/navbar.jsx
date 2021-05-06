@@ -1,7 +1,6 @@
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { useRouteMatch } from 'react-router-dom';
-import 'react-pro-sidebar/dist/css/styles.css';
 
 function NavBar() {
   const { url } = useRouteMatch();
