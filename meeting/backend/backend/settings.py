@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_neomodel',
     'api',
-    'users'
+    'users',
+    'rest_framework',
+    'knox',
 ]
 
 MIDDLEWARE = [
@@ -137,5 +139,13 @@ STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+        # # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'knox.auth.TokenAuthentication',
+    ]
+}
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
