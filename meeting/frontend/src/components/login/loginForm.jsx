@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Axios from 'axios';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -22,6 +23,33 @@ function LoginForm() {
     username: false,
     password: false,
   });
+
+  function getUser(){
+    console.log("Loading...");
+    const fetchData = async () => {
+      try {
+        const { data } = await Axios.post(get_user,
+          {
+            username: loginData.username,
+            password: loginData.password
+          }
+        );
+        console.log('data '+ data.length);
+        if(data.length === 1){
+          console.log('just testing')
+          console.log(history().location);
+          history().push(`/home`);
+          history().go();
+          console.log(history().location);
+        }else{
+          alert('Usuario o contraseña incorrectos');
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  };
 
   const handleInputChange = (e) => {
     console.log(e.target.value);
