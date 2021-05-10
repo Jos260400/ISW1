@@ -4,7 +4,7 @@
   "description": "Designing a web calculator with react and eslint",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cucumber-js features",
     "start": "webpack serve --mode development --open",
     "build": "webpack --mode production"
   },
@@ -37,6 +37,7 @@
     "webpack-merge": "^5.7.3"
   },
   "dependencies": {
+    "@cucumber/cucumber": "^7.2.1",
     "@hookform/resolvers": "^2.4.0",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.0",
