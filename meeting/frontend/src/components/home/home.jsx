@@ -4,6 +4,7 @@ import {
   Route,
   useRouteMatch,
 } from 'react-router-dom';
+import 'bootstrap/dist/js/bootstrap';
 import Navbar from '../navbar/navbar';
 import Perfil from '../perfil/perfil';
 import HomeView from '../homeView/homeView';

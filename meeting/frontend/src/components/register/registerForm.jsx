@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Axios from 'axios';
+import history from '../utils/history';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -11,6 +13,9 @@ const schema = z.object({
 });
 
 function RegisterForm() {
+
+  const post_user = 'http://3.15.200.46:8000/api/register/';
+
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(schema),
   });
@@ -47,7 +52,32 @@ function RegisterForm() {
     }
   };
 
-  const onSubmit = (data) => console.log(data);
+  const createUser = () =>{
+    const fetchData = async () =>{
+      try{
+        const { data } = await Axios.post(post_user,
+          {
+            username: registerData.username,
+            email: registerData.email,
+            password: registerData.password,
+          }
+        );
+        history.push(`/home`);
+        history.go();
+      } catch (error){
+        console.log(error)
+        alert("Usuario o correo ya existente. Prueba con un correo o un usuario distinto")
+      }
+    }
+    fetchData();
+  };
+
+
+  const onSubmit = (data) => {
+    console.log(data);
+    createUser();
+  }
+
 
   return (
     <>
@@ -55,7 +85,7 @@ function RegisterForm() {
         {/* Email */}
         <div className="position-relative mt-2">
           <input
-            className={`input ${registerFilled.username ? 'is-filled' : ' '}`}
+            className={`input ${registerFilled.email ? 'is-filled' : ' '}`}
             type="text"
             name="email"
             onInput={handleInputChange}
@@ -85,7 +115,7 @@ function RegisterForm() {
         {/* Password */}
         <div className="position-relative mt-2">
           <input
-            className={`input ${registerFilled.username ? 'is-filled' : ' '}`}
+            className={`input ${registerFilled.password ? 'is-filled' : ' '}`}
             type="text"
             name="password"
             onInput={handleInputChange}
